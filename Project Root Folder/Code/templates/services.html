@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block body%}
+<ul>
+  {%for services in services %}
+  <li>
+    <p>{{service.name}}</p>
+    <p>{{service.description}}</p>
+    <p>{{service.price}}</p>
+    <form method="POST" action="{{url_for('book',service_id=service.id)}}">
+      <button type="submit">BOOK</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

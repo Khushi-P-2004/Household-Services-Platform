@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block body%}
+
+<ul>
+  {% if profs %} {% for professional in profs %}
+  <li>{{ professional.username }} (ID: {{ professional.id }}) , City: {{ professional.city}} , Speciality: {{ professional.specialization}}</li>
+
+  {%if professional.status=='pending' %}
+          <form
+            action="{{url_for('approve_prof',prof_id=professional.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-success">Approve</button>
+          </form>
+          <form
+            action="{{url_for('reject_prof',prof_id=professional.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-danger">Reject</button>
+          </form>
+          {%elif professional.status=='rejected'%}
+          <span class="text-danger">Rejected</span>
+          {%elif professional.status=='approved'%}
+          <span class="text-success">Approved</span>
+          <a
+            class="btn btn-danger"
+            href="{{url_for('del_prof',prof_id=professional.id)}}"
+            >Delete</a
+          >
+        </td>
+        {% endif %}
+  {% endfor %} {% else %}
+  <li>No professionals found</li>
+  {% endif %}
+</ul>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %} {% endblock %}

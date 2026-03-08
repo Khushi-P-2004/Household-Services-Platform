@@ -1,0 +1,37 @@
+{% extends "base.html"%} <title>add</title>
+
+{% block body%}
+<h2>Add Service</h2>
+<form method="post" class="form">
+  <label for="name"
+    >Name:
+    <input type="text" name="name" id="name" class="form-control" required
+  /></label>
+  <label for="price"
+    >Price:
+    <input type="integer" name="price" id="price" class="form-control" required
+  /></label>
+  <label for="prof_id"
+    >Professional ID:
+    <input
+      type="integer"
+      name="prof_id"
+      id="prof_id"
+      class="form-control"
+      required
+  /></label>
+
+  <input type="submit" value="Add" class="btn btn-success" />
+</form>
+<style>
+  h2 {
+    text-align: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+
+{% endblock %}

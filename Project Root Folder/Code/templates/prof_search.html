@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<h3 class="text-muted">Bookings</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>CustomerID</th>
+        <th>Service</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+
+      <tr>
+        <td>{{ booking.customer_id }}</td>
+        <td>{{ booking.package.name }}</td>
+        <td>{{ booking.location }}</td>
+        <td>{{ booking.service_date }}</td>
+        <td>{{ booking.booking_status }}</td>
+        <td>
+          {%if booking.booking_status=='pending' %}
+          <form
+            action="{{url_for('accept_booking',booking_id=booking.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-success">Accept</button>
+          </form>
+          <form
+            action="{{url_for('reject_booking',booking_id=booking.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-danger">Reject</button>
+          </form>
+          {% endif %}
+        </td>
+        <td>{{ booking.rating }}</td>
+      </tr>
+      {% endfor %}
+</html>

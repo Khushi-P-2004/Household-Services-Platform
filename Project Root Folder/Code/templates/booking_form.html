@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block body%}
+
+<form action="{{ url_for('booking') }}" method="POST">
+  <input type="hidden" name="package_id" value="{{ package.id }}" />
+  <p>Your preferred service date:</p>
+  <input type="datetime-local" name="service_date" required />
+  <input type="text" name="location" placeholder="location" required />
+  <p>Choose Professional:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for prof in professionals %}
+      <tr>
+        <td>{{prof.id}}</td>
+        <td>{{prof.username}}</td>
+        <td>{{prof.city}}</td>
+        <td>
+          <input type="checkbox" name="professional_id" value="{{ prof.id }}" />
+        </td>
+        {%endfor%}
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit">Request Booking</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html"%} <title>dashboard</title>
+<div>
+  {% block body%}
+  <nav class="navbar navbar-expand-lg py-3" style="background-color: bisque">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <form method="POST" action="{{ url_for('prof_search') }}">
+              <input
+                type="text"
+                name="location"
+                value="{{ location }}"
+                placeholder="Search by Location"
+              />
+              <button type="submit">Search</button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('prof_stat') }}">Summary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <a href="{{ url_for('p_dashboard') }}"></a>
+
+  <h3>Welcome to Pristine HS!</h3>
+  <div class="header">
+    <a href="{{ url_for('edit_profile') }}">Edit Profile</a>
+  </div>
+  <h3 class="text-muted">Bookings</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>CustomerID</th>
+        <th>Service</th>
+        <th>Location</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+
+      <tr>
+        <td>{{ booking.customer_id }}</td>
+        <td>{{ booking.package.name }}</td>
+        <td>{{ booking.location }}</td>
+        <td>{{ booking.customer.phone }}</td>
+        <td>{{ booking.service_date }}</td>
+        <td>{{ booking.booking_status }}</td>
+        <td>
+          {%if booking.booking_status=='pending' %}
+          <form
+            action="{{url_for('accept_booking',booking_id=booking.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-success">Accept</button>
+          </form>
+          <form
+            action="{{url_for('reject_booking',booking_id=booking.id)}}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="btn btn-danger">Reject</button>
+          </form>
+          {% endif %}
+        </td>
+        <td>{{ booking.rating }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <style>
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+    .header a {
+      text-decoration: none;
+      color: blue;
+      font-weight: bold;
+    }
+    h2,
+    h3 {
+      text-align: center !important;
+    }
+  </style>
+
+  {% endblock %}
+</div>

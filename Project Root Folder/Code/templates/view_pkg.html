@@ -1,0 +1,25 @@
+{% extends "base.html"%} {% block body%}
+<h3>Packages for Service: {{ service.name }}</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for package in package %}
+        <tr>
+          <td>{{ package.name }}</td>
+          <td>{{ package.description }}</td>
+          <td>{{ package.price }}</td>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="btn btn" href="{{url_for('add_package', id=service.id)}}"
+            >Add Package</a
+          >
+          
+  {% endblock %}
+</table>

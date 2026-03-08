@@ -1,0 +1,14 @@
+{% extends "base.html"%} {% block body%}
+
+<h2>Statistics</h2>
+<body>
+  <img src="{{ graph1_url }}" alt="Bookings per Service" />
+  <img src="{{ graph2_url }}" alt="Ratings per Service" />
+</body>
+<style>
+  h2,
+  h3 {
+    text-align: center;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %} <title>New Account</title>{% block body%}
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-6 m-auto">
+      <div class="card border-0 shadow">
+        <div class="card-body p-4">
+          <div class="text-center mt-3">
+            <h4>Create New Account</h4>
+          </div>
+          <form id="new" action="{{url_for('newaccount')}}" method="post">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+              class="form-control my-4 py-2"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              class="form-control my-4 py-2"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              required
+              class="form-control my-4 py-2"
+            />
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              required
+              class="form-control my-4 py-2"
+            />
+            <div class="text-center mt-3">
+              <input
+                type="submit"
+                value="Create Account"
+                class="btn btn-primary"
+              />
+            </div>
+          </form>
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

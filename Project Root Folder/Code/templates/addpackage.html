@@ -1,0 +1,26 @@
+{% extends "base.html"%} <title>add</title>
+
+{% block body%}
+<form method="POST">
+  <label for="package"
+    >Package:
+    <input type="text" name="package" class="form-control" required />
+  </label>
+  <label for="desc"
+    >Description:
+    <input type="text" name="desc" class="form-control" required />
+  </label>
+  <label for="price"
+    >Price:
+    <input
+      type="number"
+      name="price"
+      id="price"
+      class="form-control"
+      required
+    />
+  </label>
+  <input type="submit" value="Add" class="btn btn-success" />
+</form>
+
+{% endblock %}

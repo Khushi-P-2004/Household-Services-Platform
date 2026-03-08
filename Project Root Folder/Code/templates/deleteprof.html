@@ -1,0 +1,14 @@
+{% extends "base.html"%} {% block body%}
+<div class="del">
+  <h2>Delete</h2>
+  <p>Are you sure you want to delete {{user.username}}?</p>
+  <form method="POST" action="{{url_for('del_prof', prof_id=user.id)}}">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+  </form>
+</div>
+<style>
+  .del {
+    text-align: center;
+  }
+</style>
+{% endblock %}

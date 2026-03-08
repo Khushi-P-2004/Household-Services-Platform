@@ -1,0 +1,71 @@
+{% extends "base.html" %} <title>Registration</title> {% block body%}
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-6 m-auto">
+      <div class="card border-0 shadow">
+        <div class="card-body p-4">
+          <h2>Register as Professional</h2>
+          <form id="authp_" action="{{url_for('register')}}" method="post">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+              class="form-control my-4 py-2"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              class="form-control my-4 py-2"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              required
+              class="form-control my-4 py-2"
+            />
+            <label for="city">City</label>
+            <select id="city" name="city" required>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Chandigarh">Chandigarh</option>
+            </select>
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              required
+              class="form-control my-4 py-2"
+            />
+            <label for="specialization">Specialization</label>
+            <select id="specialization" name="specialization" required>
+              <option value="Painting">Painting</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Cleaning">Professional Cleaning</option>
+              <option value="HVAC">HVAC</option>
+              <option value="Pest Control">Pest Control</option>
+              <option value="Renovation">Renovation</option>
+            </select>
+            <br>
+            <label for="cv">Upload CV (pdf)</label></br>
+            <input type="file" name="cv" accept=".pdf" required />
+<div class="text-center mt-3">
+            <input type="submit" value="Register" class="btn btn-primary" /></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
